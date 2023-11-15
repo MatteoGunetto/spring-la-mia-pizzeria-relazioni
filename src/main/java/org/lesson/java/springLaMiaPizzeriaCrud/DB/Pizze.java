@@ -1,5 +1,6 @@
 package org.lesson.java.springLaMiaPizzeriaCrud.DB;
 
+import java.util.List;
 import jakarta.validation.constraints.NotEmpty;
 
 import jakarta.persistence.Entity;
@@ -8,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
+import jakarta.persistence.OneToMany;
 @Entity
 public class Pizze {
 
@@ -27,6 +29,9 @@ public class Pizze {
 
     @Positive(message="deve essere positivo")
     private float price;
+
+    @OneToMany(mappedBy = "pizza")
+    private List<Promo> promos;
 
     public Pizze() {}
     public Pizze(String name, String description, String picture, float price) {
@@ -74,6 +79,13 @@ public class Pizze {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    public List<Promo> getPromos() {
+        return promos;
+    }
+    public void setPromos(List<Promo> promos) {
+        this.promos = promos;
     }
 
 }

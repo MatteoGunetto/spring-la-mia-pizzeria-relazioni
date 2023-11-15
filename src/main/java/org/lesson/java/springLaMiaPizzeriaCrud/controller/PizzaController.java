@@ -96,4 +96,4 @@ public String delete(Model model, @PathVariable int id) {
         pizzaService.deletePizza(pizza);
         return "redirect:/";
         }
-        }
+}

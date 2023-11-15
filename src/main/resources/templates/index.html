@@ -44,7 +44,8 @@
                                th:href="@{/{id}(id=${pizza.getId()})}">Dettagli</a>
                             <a type="button" th:href="@{/update/{id}(id=${pizza.getId()})}"
                                class="btn btn-outline-dark rounded-0 bg-warning">Modifica</a>
-                            <form th:action="@{/delete/{id}(id=*{id})}" method="post">
+                            <form method="POST" th:action="@{/delete/{id}(id=*{id})}"
+                                  onsubmit="return confirm('Sei sicuro di volerla cancellare?')">
                                 <button type="submit" class="btn btn-outline-dark rounded-0 bg-danger">Eimina</button>
                             </form>
                         </div>

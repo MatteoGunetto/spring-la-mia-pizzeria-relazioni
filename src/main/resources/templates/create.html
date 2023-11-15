@@ -7,7 +7,7 @@
         <div class="container my-5">
             <div class="row mb-4 d-flex align-items-center justify-content-between">
                 <div class="col">
-                    <h1>Create a new Pizza</h1>
+                    <h1>[[${pizza.id} == 0 ? 'Crea a nuova pizza': 'Modifica una pizza']]</h1>
                 </div>
                 <div class="banner" style="height: 300px; text-align: center; overflow: hidden; position: relative;">
                     <!-- Inserisci l'immagine nel banner -->
@@ -71,7 +71,7 @@
 
                         <div class="d-flex align-items-center gap-3 align-self-end">
                             <button type="submit" class="btn btn-outline-dark rounded-0">
-                                [[${pizza.id == 0 ? 'Create' : 'Update'}]]
+                                [[${pizza.id == 0 ? 'Crea' : 'Modifica'}]]
                             </button>
                             <button type="reset" class="btn btn-outline-danger rounded-0">Reset</button>
                         </div>
