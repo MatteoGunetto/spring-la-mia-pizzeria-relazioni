@@ -1,6 +1,7 @@
 package org.lesson.java.springLaMiaPizzeriaCrud.DB;
 
 import java.util.List;
+import java.util.Arrays;
 import jakarta.validation.constraints.NotEmpty;
 
 import jakarta.persistence.Entity;
@@ -10,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
 @Entity
 public class Pizze {
 
@@ -32,13 +34,16 @@ public class Pizze {
 
     @OneToMany(mappedBy = "pizza")
     private List<Promo> promos;
+    @ManyToMany
+    private List<Ingredient> ingredients;
 
     public Pizze() {}
-    public Pizze(String name, String description, String picture, float price) {
+    public Pizze(String name, String description, String picture, float price, Ingredient... ingredients) {
         setName(name);
         setDescription(description);
         setPicture(picture);
         setPrice(price);
+        setIngredients(Arrays.asList(ingredients));
     }
 
     public int getId() {
@@ -86,6 +91,42 @@ public class Pizze {
     }
     public void setPromos(List<Promo> promos) {
         this.promos = promos;
+    }
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public boolean hasIngredient(Ingredient ingredient) {
+        if(getIngredients() == null) return false;
+
+        for(Ingredient tempIngredient : getIngredients()) {
+            if(tempIngredient.getId() == ingredient.getId()) return true;
+        }
+
+        return false;
+    }
+
+    public void addIngredients(Ingredient... ingredients) {
+        getIngredients().addAll(Arrays.asList(ingredients));
+    }
+
+    @Override
+    public int hashCode() {
+        return getId();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Pizze)) return false;
+        Pizze incomingPizza = (Pizze)obj;
+        return getId() == incomingPizza.getId();
+    }
+
+    public void removeIngredients(Ingredient... ingredients) {
+        getIngredients().removeAll(Arrays.asList(ingredients));
     }
 
 }

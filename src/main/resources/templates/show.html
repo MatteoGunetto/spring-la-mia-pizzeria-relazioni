@@ -25,6 +25,13 @@
                     class="h-100 w-100 p-5 shadow bg-white d-flex flex-column justify-content-start align-items-start gap-3">
                 <p class="">[[${pizza.description}]]</p>
                 <small class="align-self-end">Prezzo: <span class="fs-3">[[${pizza.price}]]</span>€</small>
+                <div class="" th:if="*{ingredients.size()} > 0">
+                    <h5>Ingredients</h5>
+                    <ul class="list-unstyled d-flex align-items-center justify-content-start gap-2 flex-wrap">
+                        <li class="text-italic border border-dark p-2" th:each="ingredient : *{ingredients}" th:object="${ingredient}">
+                            [[*{name}]]</li>
+                    </ul>
+                </div>
             </div>
             <img class="object-fit-cover rounded-0 shadow" height="400" width="400" th:src="${pizza.picture}">
         </div>
@@ -62,13 +69,11 @@
                             </div>
                         </div>
                     </div>
-                <li/>
-            </ul>
-            <a type="button" class="mt-3 btn btn-dark rounded-0 shadow" th:href="@{/promo/{pizza}(pizza=*{id})}">
-                Crea nuova promozione
-            </a>
         </div>
     </div>
+    <a type="button" class="mt-3 btn btn-dark rounded-0 shadow" th:href="@{/promo/{pizza}(pizza=*{id})}">
+        Crea nuova promozione
+    </a>
 </div>
 </body>
 </html>

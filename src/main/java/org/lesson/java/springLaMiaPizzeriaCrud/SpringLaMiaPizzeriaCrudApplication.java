@@ -2,6 +2,8 @@ package org.lesson.java.springLaMiaPizzeriaCrud;
 
 import org.lesson.java.springLaMiaPizzeriaCrud.DB.Pizze;
 import org.lesson.java.springLaMiaPizzeriaCrud.DB.serv.PizzaService;
+import org.lesson.java.springLaMiaPizzeriaCrud.DB.serv.IngredientService;
+import org.lesson.java.springLaMiaPizzeriaCrud.DB.Ingredient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -13,12 +15,47 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner {
 	@Autowired
 	private PizzaService pizzaService;
 
+	@Autowired
+	private IngredientService ingredientService;
+
 	public static void main(String[] args) {
 		SpringApplication.run(SpringLaMiaPizzeriaCrudApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
+
+		Ingredient ingr1 = new Ingredient("Pomodoro", null);
+		Ingredient ingr2 = new Ingredient("Mozzarella", null);
+		Ingredient ingr3 = new Ingredient("Basilico", null);
+		Ingredient ingr4 = new Ingredient("Olio d'oliva", null);
+		Ingredient ingr5 = new Ingredient("Salame piccante", null);
+		Ingredient ingr6 = new Ingredient("Frutti di mare", null);
+		Ingredient ingr7 = new Ingredient("Prosciutto", null);
+		Ingredient ingr8 = new Ingredient("Carciofi", null);
+		Ingredient ingr9 = new Ingredient("Funghi", null);
+		Ingredient ingr10 = new Ingredient("Olive", null);
+		Ingredient ingr11 = new Ingredient("Uova", null);
+		Ingredient ingr12 = new Ingredient("Patate", null);
+		Ingredient ingr13 = new Ingredient("Rosmarino", null);
+
+		ingredientService.save(ingr1);
+		ingredientService.save(ingr2);
+		ingredientService.save(ingr3);
+		ingredientService.save(ingr4);
+		ingredientService.save(ingr5);
+		ingredientService.save(ingr6);
+		ingredientService.save(ingr7);
+		ingredientService.save(ingr8);
+		ingredientService.save(ingr9);
+		ingredientService.save(ingr10);
+		ingredientService.save(ingr11);
+		ingredientService.save(ingr12);
+		ingredientService.save(ingr13);
+
+
+
+
 		Pizze pizza1 = new Pizze("Margherita", "La pizza Margherita è una pizza classica italiana che è composta da una base di pasta, salsa di pomodoro, mozzarella e basilico. ", "https://upload.wikimedia.org/wikipedia/commons/c/c8/Pizza_Margherita_stu_spivack.jpg", 4.99f);
 
 		Pizze pizza2 = new Pizze("Diavola", "Pizza dal sapore intenso e piccante, con un contrasto tra la dolcezza della salsa di pomodoro e la sapidità del salamino piccante. La mozzarella filante completa il piatto, rendendolo ancora più gustoso.", "https://plus.unsplash.com/premium_photo-1668771085743-1d2d19818140?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2787&q=80", 9.50f);

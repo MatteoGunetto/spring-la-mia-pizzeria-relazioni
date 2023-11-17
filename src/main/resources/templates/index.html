@@ -20,6 +20,7 @@
     <div class="row flex-column flex-md-row mb-4">
         <div class="col">
             <a href="/create" type="button" class="btn btn-outline-dark rounded-0 bg-warning my-2">Crea nuova pizza</a>
+            <a href="/ingredients" type="button" class="btn btn-dark rounded-0">Ingredients List</a>
         </div>
         <div class="col">
             <form class="d-flex align-items-center my-2">
@@ -53,6 +54,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row p-5 bg-white shadow" th:if="${pizzas.size() == 0}">
+        <h3 class="col fw-semibold w-100 text-center">No pizzas Yet!</h3>
     </div>
 </div>
 </body>
